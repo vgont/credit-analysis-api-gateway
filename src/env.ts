@@ -8,7 +8,7 @@ export const envSchema = z.object({
   DATABASE_PASSWORD: z.string(),
   DATABASE_NAME: z.string(),
   ARGON2_SECRET: z.string(),
-JWT_SECRET: z.string()
+  JWT_SECRET: z.string(),
 });
 
 export const env = envSchema.parse(process.env);
