@@ -1,25 +1,19 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClientsModule, Transport } from '@nestjs/microservices';
+import { AuthModule } from './auth/auth.module';
+import { DatabaseModule } from './database/database.module';
+import { ClientModule } from './client/client.module';
+import { InvoiceModule } from './invoice/invoice.module';
+import { CreditAnalysisModule } from './credit-analysis/credit-analysis.module';
 
 @Module({
   imports: [
-    ClientsModule.register([
-      {
-        name: 'KAFKA-SERVICE',
-        transport: Transport.KAFKA,
-        options: {
-          client: {
-            clientId: 'gateway',
-            brokers: ['localhost:9092'],
-          },
-          consumer: {
-            groupId: 'gateway',
-          },
-        },
-      },
-    ]),
+    AuthModule,
+    DatabaseModule,
+    ClientModule,
+    InvoiceModule,
+    CreditAnalysisModule,
   ],
   controllers: [AppController],
   providers: [AppService],
