@@ -3,3 +3,9 @@ export interface ICreditAnalysis {
   creditReleased: number;
   createdAt: string;
 }
+
+export interface ReqUser {
+  user: {
+    username: string;
+  };
+}
